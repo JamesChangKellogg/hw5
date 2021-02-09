@@ -68,6 +68,102 @@ function renderRides(ridesArray) {
 }
 
 window.addEventListener('DOMContentLoaded', function() {
-  // YOUR CODE
-})
+  // 🎇🎇🎇YOUR CODE 🎇🎇🎇
 
+  // Create Buttons
+  let allRidesButton = document.querySelector('#all-filter')
+  let nooberPurpleButton = document.querySelector('#noober-purple-filter')
+  let nooberPoolButton = document.querySelector('#noober-pool-filter')
+  let nooberXLButton = document.querySelector('#noober-xl-filter')
+  let nooberXButton = document.querySelector('#noober-x-filter')
+
+  // 1️⃣ ALL RIDES BUTTON/ //
+  allRidesButton.addEventListener('click', async function(event) {
+    event.preventDefault()
+    // 🤖 request ride data from API
+    let url = 'https://kiei451.com/api/rides.json'
+    let response = await fetch(url)
+    let json = await response.json()
+    console.log(json)     // output data to console
+    document.querySelector('.rides').innerHTML = ""       // Reset contents of innerHTML
+    renderRides(json)     //  Print all rides to 'rides' HTML container using insertAdjacentHTML
+  }) // 1️⃣ 🛑 All Rides close logic
+
+  // 2️⃣ Noober Purple BUTTON  //
+  nooberPurpleButton.addEventListener('click', async function(event) {
+    event.preventDefault()
+    // 🤖 request ride data from API
+    let url = 'https://kiei451.com/api/rides.json'
+    let response = await fetch(url)
+    let json = await response.json()
+    // 🤖 create array of Noober Purple rides
+    let purpleRides = []
+    for (let i=0; i<json.length; i++) {
+      if (levelOfService(json[i]) == 'Noober Purple') {
+        purpleRides.push(json[i])
+      } 
+    }
+    console.log(purpleRides)
+    document.querySelector('.rides').innerHTML = ""       // Reset contents of innerHTML
+    renderRides(purpleRides)    // Print purple rides to 'rides' HTML container using insertAdjacentHTML
+  }) // 2️⃣🛑 Noober Purple close logic
+
+  // 3️⃣ Noober Pool BUTTON //
+  nooberPoolButton.addEventListener('click', async function(event) {
+    event.preventDefault()
+    // 🤖 request ride data from API
+    let url = 'https://kiei451.com/api/rides.json'
+    let response = await fetch(url)
+    let json = await response.json()
+    // 🤖 create array of Noober Purple rides
+    let poolRides = []
+    for (let i=0; i<json.length; i++) {
+      if (levelOfService(json[i]) == 'Noober Pool') {
+        poolRides.push(json[i])
+      } 
+    }
+    console.log(poolRides)
+    document.querySelector('.rides').innerHTML = ""       // Reset contents of innerHTML
+    renderRides(poolRides)    // Print pool rides to 'rides' HTML container using insertAdjacentHTML
+  }) // 3️⃣🛑 Noober Pool close logic
+
+    // 4️⃣ Noober XL BUTTON //
+    nooberXLButton.addEventListener('click', async function(event) {
+      event.preventDefault()
+      // 🤖 request ride data from API
+      let url = 'https://kiei451.com/api/rides.json'
+      let response = await fetch(url)
+      let json = await response.json()
+      // 🤖 create array of Noober Purple rides
+      let xlRides = []
+      for (let i=0; i<json.length; i++) {
+        if (levelOfService(json[i]) == 'Noober XL') {
+          xlRides.push(json[i])
+        } 
+      }
+      console.log(xlRides)
+      document.querySelector('.rides').innerHTML = ""       // Reset contents of innerHTML
+      renderRides(xlRides)    // Print XL rides to 'rides' HTML container using insertAdjacentHTML
+    }) // 4️⃣🛑 Noober XL close logic
+
+    // 5️⃣ Noober X BUTTON //
+    nooberXButton.addEventListener('click', async function(event) {
+      event.preventDefault()
+      // 🤖 request ride data from API
+      let url = 'https://kiei451.com/api/rides.json'
+      let response = await fetch(url)
+      let json = await response.json()
+      // 🤖 create array of Noober Purple rides
+      let nooberXRides = []
+      for (let i=0; i<json.length; i++) {
+        if (levelOfService(json[i]) == 'Noober X') {
+          nooberXRides.push(json[i])
+        } 
+      }
+      console.log(nooberXRides)
+      document.querySelector('.rides').innerHTML = ""       // Reset contents of innerHTML
+      renderRides(nooberXRides)    // Print X rides to 'rides' HTML container using insertAdjacentHTML
+    }) // 5️⃣🛑 Noober X close logic
+
+}) // CLOSING BRACKETS
+// 🎇🎇🎇YOUR CODE ENDS 🎇🎇🎇
